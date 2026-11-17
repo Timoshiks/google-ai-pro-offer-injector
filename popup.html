@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="color-scheme" content="light">
-<title>Google AI Pro · 注入器</title>
+<title>Gemini Injector By subhankaladi</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -11,8 +11,13 @@
     font: 13px/1.6 -apple-system, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
     color: #28354a; background: linear-gradient(150deg, #eef3ff 0, #f7f9fc 180px);
   }
-  h1 { font-size: 17px; margin: 0 0 5px; font-weight: 700; letter-spacing: -.4px; color: #1d2c47; }
-  .sub { font-size: 11px; color: #69778d; margin-bottom: 18px; }
+  .head { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
+  .logo {
+    width: 46px; height: 46px; border-radius: 12px; object-fit: cover; flex-shrink: 0;
+    box-shadow: 0 4px 12px #263b6430; border: 1px solid #ffffffb0;
+  }
+  h1 { font-size: 17px; margin: 0 0 3px; font-weight: 700; letter-spacing: -.4px; color: #1d2c47; }
+  .sub { font-size: 11px; color: #69778d; }
   .box {
     border: 1px solid #e2e8f2; border-radius: 14px; padding: 12px; margin-bottom: 12px;
     background: #fff; box-shadow: 0 4px 16px #263b6410;
@@ -46,31 +51,36 @@
 </style>
 </head>
 <body>
-  <h1>Google AI Pro 2 年 · 注入器</h1>
-  <div class="sub">先在浏览器登录好目标号（美国区），再选层</div>
-
-  <div class="box">
-    <div class="lbl">注入层（选完自动生效，回页面刷新一次）</div>
-    <label class="row"><input type="radio" name="layer" value="off"><span class="t">关闭注入</span></label>
-    <label class="row"><input type="radio" name="layer" value="12m"><span class="t">第一层 · 12 个月</span><span class="tag">首订</span></label>
-    <label class="row"><input type="radio" name="layer" value="6m_ss"><span class="t">第二层 · 6 个月（SS）</span><span class="tag">叠加</span></label>
-    <label class="row"><input type="radio" name="layer" value="6m"><span class="t">第三层 · 6 个月</span><span class="tag">叠加</span></label>
-    <label class="row"><input type="radio" name="layer" value="6m_2"><span class="t">备用 · 6 个月（备）</span><span class="tag">替补</span></label>
+  <div class="head">
+    <img class="logo" src="icons/128.png" alt="subhankaladi logo">
+    <div>
+      <h1>Gemini Injector By subhankaladi</h1>
+      <div class="sub">subhankaladi Edition · Sign in to the target account (U.S. region), then select a layer</div>
+    </div>
   </div>
 
-  <div id="state" class="warn" role="status" aria-live="polite">当前页面未检测到注入</div>
+  <div class="box">
+    <div class="lbl">Injection layer (takes effect automatically; refresh the page once)</div>
+    <label class="row"><input type="radio" name="layer" value="off"><span class="t">Disable injection</span></label>
+    <label class="row"><input type="radio" name="layer" value="12m"><span class="t">Layer 1 · 12 months</span><span class="tag">First-time</span></label>
+    <label class="row"><input type="radio" name="layer" value="6m_ss"><span class="t">Layer 2 · 6 months (SS)</span><span class="tag">Stack</span></label>
+    <label class="row"><input type="radio" name="layer" value="6m"><span class="t">Layer 3 · 6 months</span><span class="tag">Stack</span></label>
+    <label class="row"><input type="radio" name="layer" value="6m_2"><span class="t">Backup · 6 months</span><span class="tag">Alternate</span></label>
+  </div>
+
+  <div id="state" class="warn" role="status" aria-live="polite">No active injection detected on this page</div>
 
   <ol>
-    <li>打开 <b>one.google.com/plans</b>，确认左上是目标邮箱</li>
-    <li>在上面选层 → 刷新页面 → 右下角出现「注入已挂载」</li>
-    <li>点 AI Pro 卡片的 <b>Get discount</b>，弹出 Play 结账窗</li>
-    <li>看弹窗顶部横幅：<b>绿=免费可订</b>，红=别点</li>
-    <li>加卡（美国免税邮编 97201）→ 核对金额 $0.00 → 订阅</li>
-    <li>叠下一层：回来换层 → 刷新 → 再点一次</li>
-    <li>全部完成后去 play.google.com 取消自动续订</li>
+    <li>Open <b>one.google.com/plans</b> and confirm the target email is shown at the top left</li>
+    <li>Select a layer above → refresh the page → confirm “Injection active” appears at the bottom right</li>
+    <li>Click <b>Get discount</b> on the AI Pro card to open the Play checkout window</li>
+    <li>Check the banner at the top: <b>green = free trial</b>; do not proceed if it is red</li>
+    <li>Add a card (U.S. tax-free ZIP code 97201) → verify the total is $0.00 → subscribe</li>
+    <li>Stack the next layer: return here, switch layers, refresh, and click again</li>
+    <li>When finished, go to play.google.com and turn off automatic renewal</li>
   </ol>
 
-  <div class="foot"><span>自用工具</span><a href="https://t.me/pk_oa" target="_blank">t.me/pk_oa</a></div>
+  <div class="foot"><span>subhankaladi Edition</span><a href="https://whatsapp.com/channel/0029Vavb6Jy6buMQjQ0l8A45" target="_blank" rel="noopener noreferrer">subhankaladi channel</a></div>
   <script src="popup.js"></script>
 </body>
 </html>

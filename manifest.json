@@ -1,8 +1,9 @@
-{
+﻿{
   "manifest_version": 3,
-  "name": "Xi · Google AI Pro 2Y Offer Injector",
-  "version": "1.0.0",
-  "description": "Google One / AI Pro 结账 offer token 注入器（自用）",
+  "name": "Gemini Injector By subhankaladi",
+  "version": "1.1.0",
+  "description": "Google One / AI Pro checkout offer-token injector (subhankaladi Edition)",
+  "homepage_url": "https://whatsapp.com/channel/0029Vavb6Jy6buMQjQ0l8A45",
   "permissions": ["storage"],
   "host_permissions": [
     "https://one.google.com/*",
@@ -11,10 +12,11 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Google AI Pro 注入器"
+    "default_title": "Gemini Injector By subhankaladi"
   },
   "icons": {
     "16": "icons/16.png",
+    "32": "icons/32.png",
     "48": "icons/48.png",
     "128": "icons/128.png"
   },

@@ -1,12 +1,13 @@
-/* Xi · Google AI Pro Offer Injector — 结账弹窗价格守卫
- * 作用：在 Play 结账 iframe 里读真实条款，绿条=免费试用可点，红条=要扣钱别点。
+﻿/* Gemini Injector By subhankaladi — checkout price guard
+ * Reads the actual terms inside the Play checkout iframe. Green means the free trial is safe to select; red means a charge may apply.
  */
 (() => {
-  if (window.__GAPT_GUARD || window.top === window) return; // 只在子框架里跑
+  if (window.__GAPT_GUARD || window.top === window) return; // Run only inside child frames.
   window.__GAPT_GUARD = true;
 
-  const FREE_WORDS = ["free trial", "start your free trial", "免费试用", "US$0.00", "$0.00", "0,00", "€0.00", "won't be charged", "不会向您收费", "不会收费"];
-  const PAID_WORDS = ["/mo after", "/month after", "per month after", "立即付款", "pay now", "今日扣款", "charged today"];
+  // Unicode escapes preserve detection of Chinese checkout terms without exposing Chinese text in the extension source or UI.
+  const FREE_WORDS = ["free trial", "start your free trial", "\u514d\u8d39\u8bd5\u7528", "US$0.00", "$0.00", "0,00", "€0.00", "won't be charged", "\u4e0d\u4f1a\u5411\u60a8\u6536\u8d39", "\u4e0d\u4f1a\u6536\u8d39"];
+  const PAID_WORDS = ["/mo after", "/month after", "per month after", "\u7acb\u5373\u4ed8\u6b3e", "pay now", "\u4eca\u65e5\u6263\u6b3e", "charged today"];
 
   let bar = null;
   function paint(kind, text) {
@@ -34,13 +35,13 @@
     const paid = PAID_WORDS.some((w) => t.includes(w.toLowerCase()));
 
     if (free && !paid) {
-      paint("ok", "✅ 检测到免费试用 —— 本弹窗可安全订阅（请自己再核对金额为 $0.00）");
+      paint("ok", "✅ Free trial detected — It is safe to subscribe in this window (verify that the total is $0.00) · subhankaladi");
     } else if (paid && !free) {
-      paint("bad", "❌ 未检出免费试用，可能是真扣费 —— 先别点订阅，返回换层重试");
+      paint("bad", "❌ No free trial detected; an actual charge may apply — Do not subscribe. Go back, switch layers, and try again · subhankaladi");
     } else if (free && paid) {
-      paint("warn", "⚠️ 条款同时出现免费与付费字样 —— 请人工确认金额后再点");
+      paint("warn", "⚠️ Both free and paid terms were detected — Verify the amount carefully before continuing · subhankaladi");
     } else {
-      paint("warn", "… 未识别到价格条款（可能在加载中）");
+      paint("warn", "… Price terms not detected (the checkout may still be loading) · subhankaladi");
     }
   }
 

@@ -1,4 +1,4 @@
-/* Xi · Google AI Pro Offer Injector — content script（隔离世界，负责传配置 / 回状态） */
+﻿/* Gemini Injector By subhankaladi — isolated-world content script that passes configuration and reports status. */
 (() => {
   let lastState = { layer: "off", mounted: false };
 
@@ -17,13 +17,13 @@
     }
   }
 
-  // MAIN world 回报状态
+  // Receive status reports from the MAIN world.
   window.addEventListener("message", (ev) => {
     const d = ev.data;
     if (d && d.__gapt === 1 && d.type === "state" && d.state) lastState = d.state;
   });
 
-  // popup 查询状态 / 改配置后立即热更新
+  // Let the popup query status and apply configuration changes immediately.
   try {
     chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       if (!msg) return;
@@ -44,7 +44,7 @@
   } catch (e) {}
 
   loadAndPush();
-  // 页面 SPA 切路由后再推一次，防止 hook 之后才挂载
+  // Push again after SPA navigation in case the hook was mounted later.
   setTimeout(loadAndPush, 800);
   setTimeout(loadAndPush, 2500);
 })();
